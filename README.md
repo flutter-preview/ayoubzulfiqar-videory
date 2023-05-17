@@ -1,16 +1,28 @@
 # videory
 
-A new Flutter project.
+This is Video downloader app that download videos from different social media apps. This project is in progress.
 
-## Getting Started
+## Documentation
 
-This project is a starting point for a Flutter application.
+Test and Trial based project
+Let's Hope how it turns out
 
-A few resources to get you started if this is your first Flutter project:
+#### Phase One
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- YouTube Implementation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Resources
+
+Libraries & Dependencies
+
+```txt
+StateManagement - RxDart 
+YouTube - https://pub.dev/packages/youtube_explode_dart
+File Path Selection - https://pub.dev/packages/file_picker
+Permission Handler - https://pub.dev/packages/permission_handler
+Flutter FFMPEG - https://pub.dev/packages/flutter_ffmpeg
+Shared Preferences - https://pub.dev/packages/shared_preferences
+Path - https://pub.dev/packages/path
+Open File - https://pub.dev/packages/open_file
+Build Runner - https://pub.dev/packages/build_runner
+```
