@@ -43,6 +43,7 @@ dependencies:
   path: ^1.8.3
   open_file: ^3.3.1
   win32: ^4.1.4
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
