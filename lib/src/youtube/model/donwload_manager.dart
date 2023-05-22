@@ -783,7 +783,7 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
       if (track.downloadStatus == DownloadStatus.downloading ||
           track.downloadStatus == DownloadStatus.muxing) {
         track.downloadStatus = DownloadStatus.failed;
-        track.error = 'Error occurred while downloading';
+        track.error = 'Error Occurred While Downloading';
         prefs.setString(id, json.encode(track));
       }
       videos.add(track);
