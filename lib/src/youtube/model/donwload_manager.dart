@@ -777,7 +777,7 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
     }
     final List<SingleTrack> videos = <SingleTrack>[];
     for (final String id in videoIds) {
-      final jsonVideo = prefs.getString(id)!;
+      final String jsonVideo = prefs.getString(id)!;
       final SingleTrack track =
           SingleTrack.fromJson(json.decode(jsonVideo) as Map<String, dynamic>);
       if (track.downloadStatus == DownloadStatus.downloading ||
