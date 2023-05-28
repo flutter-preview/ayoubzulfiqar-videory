@@ -10,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:videory/src/youtube/model/query_video.dart';
 import 'package:videory/src/youtube/model/settings.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
-// import 'package:flutter_ffmpeg/flutter_ffmpeg.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 
 enum DownloadStatus {
@@ -247,6 +246,7 @@ class MuxedTrack extends SingleTrack {
 class DownloadManager extends ChangeNotifier {
   DownloadManager();
 
+  // download single Video
   Future<void> downloadStream(
     YoutubeExplode yt,
     QueryVideo video,
@@ -266,7 +266,7 @@ class DownloadManager extends ChangeNotifier {
 //------
 
 class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
-  static final invalidChars = RegExp(r'[\\\/:*?"<>|]');
+  static final RegExp invalidChars = RegExp(r'[\\\/:*?"<>|]');
 
   final SharedPreferences _prefs;
 
@@ -274,7 +274,7 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
   final List<SingleTrack> videos;
   final List<String> videoIds;
 
-  final Map<int, bool> cancelTokens = {};
+  final Map<int, bool> cancelTokens = <int, bool>{};
 
   int _nextId;
 
@@ -372,7 +372,8 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
 
     if (isMerging) {
       if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-        final process = await Process.run('ffmpeg', [], runInShell: true);
+        final ProcessResult process =
+            await Process.run('ffmpeg', <String>[], runInShell: true);
         if (!(process.stderr as String).startsWith("ffmpeg version")) {
           showSnackbar(const SnackBar(content: Text("FFMPEGNotFound")));
           return;
@@ -567,7 +568,7 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
     final Process process =
         await Process.start('ffmpeg', args, runInShell: true);
     process.exitCode.then((exitCode) async {
-      //sigterm
+      //sig-term
       if (exitCode == -1) {
         return;
       }
@@ -791,3 +792,6 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
     return DownloadManagerImpl._(prefs, nextId, videoIds, videos);
   }
 }
+
+
+

@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:videory/src/youtube/model/download_manager.dart';
 
 @immutable
 class QueryPlayList {
@@ -41,7 +42,6 @@ class PlaylistResult {
   });
 }
 
-
 /*
 
 DOCS:
@@ -54,3 +54,39 @@ PlaylistResult: Represents the result of a playlist query, containing a list of 
 These classes can be used to model and handle YouTube playlist queries in your Flutter app.
 
 */
+
+class Playlist {
+  final String id;
+  final String title;
+  final List<SingleTrack> tracks;
+
+  Playlist({required this.id, required this.title, required this.tracks});
+
+  factory Playlist.fromJson(Map<String, dynamic> json) {
+    final List<dynamic> trackList = json['tracks'] as List<dynamic>;
+    final List<SingleTrack> tracks =
+        trackList.map((track) => SingleTrack.fromJson(track)).toList();
+
+    return Playlist(
+      id: json['id'] as String,
+      title: json['title'] as String,
+      tracks: tracks,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final List<dynamic> trackList =
+        tracks.map((track) => track.toJson()).toList();
+
+    return {
+      'id': id,
+      'title': title,
+      'tracks': trackList,
+    };
+  }
+
+  SingleTrack? get video {
+    // Return the first track as the video
+    return tracks.isNotEmpty ? tracks.first : null;
+  }
+}
