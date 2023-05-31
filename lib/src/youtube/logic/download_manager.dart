@@ -7,8 +7,8 @@ import 'package:path/path.dart' as path;
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:videory/src/youtube/model/query_video.dart';
-import 'package:videory/src/youtube/model/settings.dart';
+import 'package:videory/src/youtube/logic/settings.dart';
+import 'package:videory/src/youtube/model/video_model.dart';
 import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 import 'package:ffmpeg_kit_flutter/ffmpeg_kit.dart';
 
@@ -792,6 +792,3 @@ class DownloadManagerImpl extends ChangeNotifier implements DownloadManager {
     return DownloadManagerImpl._(prefs, nextId, videoIds, videos);
   }
 }
-
-
-
