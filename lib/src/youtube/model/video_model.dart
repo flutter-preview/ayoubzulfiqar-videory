@@ -15,4 +15,15 @@ class QueryVideo {
     required this.channelTitle,
     required this.duration,
   });
+
+  @override
+  String toString() {
+    return {
+      "id": id,
+      "title": title,
+      "thumbnailUrl": thumbnailUrl,
+      "channelTitle": channelTitle,
+      "duration": duration,
+    }.toString();
+  }
 }

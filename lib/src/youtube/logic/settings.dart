@@ -148,7 +148,7 @@ Future<bool> requestStoragePermission() async {
       var status = await Permission.storage.request();
       return status.isGranted;
     } else if (Platform.isIOS) {
-      var status = await Permission.photos.request();
+      var status = await Permission.storage.request();
       return status.isGranted;
     } else {
       debugPrint('UnSupported Platform.');
