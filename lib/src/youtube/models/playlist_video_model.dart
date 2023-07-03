@@ -1,11 +1,14 @@
-class YouTubePlaylist {
+import 'package:flutter/foundation.dart' show immutable;
+
+@immutable
+class PlaylistVideos {
   final String playlistId;
   final String title;
   final String thumbnailUrl;
   final String channelTitle;
   final int videoCount;
 
-  YouTubePlaylist({
+  const PlaylistVideos({
     required this.playlistId,
     required this.title,
     required this.thumbnailUrl,

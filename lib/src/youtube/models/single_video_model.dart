@@ -1,14 +1,17 @@
-class YouTubeVideo {
-  String videoId;
-  String title;
-  String thumbnailUrl;
-  String channelTitle;
-  int viewCount;
-  int likeCount;
-  int dislikeCount;
-  String duration;
+import 'package:flutter/foundation.dart' show immutable;
 
-  YouTubeVideo({
+@immutable
+class SingleYouTubeVideo {
+  final String videoId;
+  final String title;
+  final String thumbnailUrl;
+  final String channelTitle;
+  final int viewCount;
+  final int likeCount;
+  final int dislikeCount;
+  final String duration;
+
+  const SingleYouTubeVideo({
     required this.videoId,
     required this.title,
     required this.channelTitle,
